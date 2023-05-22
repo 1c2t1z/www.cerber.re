@@ -28,7 +28,7 @@ jobs:
       with:
         step: start
         token: ${{ secrets.GITHUB_TOKEN }}
-        env: Production
+        env: production
 
     # Install Hugo (specific version)
     - name: Install Hugo
