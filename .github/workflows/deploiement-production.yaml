@@ -63,4 +63,5 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         status: ${{ job.status }}
         deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+        env: production
         env_url: ${{ steps.vercel-action.outputs.preview-url }}
