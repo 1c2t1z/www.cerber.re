@@ -26,6 +26,7 @@ jobs:
       uses: bobheadxi/deployments@v1
       id: deployment
       with:
+        name: test
         step: start
         token: ${{ secrets.GITHUB_TOKEN }}
         env: ${{ steps.deployment.outputs.env }}
@@ -59,6 +60,7 @@ jobs:
       uses: bobheadxi/deployments@v1
       if: always()
       with:
+        name: test
         step: finish
         token: ${{ secrets.GITHUB_TOKEN }}
         status: ${{ job.status }}
