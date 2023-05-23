@@ -23,12 +23,12 @@ jobs:
 
     # Initiate deployment status
     - name: Start Deployment
-      uses: bobheadxi/deployments@v1.0.0
+      uses: bobheadxi/deployments@v1
       id: deployment
       with:
         step: start
         token: ${{ secrets.GITHUB_TOKEN }}
-        env: production
+        env: ${{ steps.deployment.outputs.env }}
 
     # Install Hugo (specific version)
     - name: Install Hugo
@@ -56,12 +56,12 @@ jobs:
 
     # Update deployment status
     - name: Update Deployment Status
-      uses: bobheadxi/deployments@v1.0.0
+      uses: bobheadxi/deployments@v1
       if: always()
       with:
         step: finish
         token: ${{ secrets.GITHUB_TOKEN }}
         status: ${{ job.status }}
         deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-        env: production
+        env: ${{ steps.deployment.outputs.env }}
         env_url: ${{ steps.vercel-action.outputs.preview-url }}
